@@ -9,7 +9,7 @@ import path from "node:path"
 const ADMIN_ID = 886539766
 const DB_DIR = "/data/storage"
 const DB_FILE = path.join(DB_DIR, "entries.json")
-const MAX_ENTRIES = 20
+const MAX_ENTRIES = 100
 
 const states = new Map()
 
