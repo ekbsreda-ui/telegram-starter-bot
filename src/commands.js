@@ -31,6 +31,21 @@ function isAdmin(ctx) {
 }
 
 function getContent(msg) {
+
+  if (msg.audio) {
+    return {
+      type: "audio",
+      fileId: msg.audio.file_id,
+      caption: msg.caption || ""
+    }
+  }
+
+  if (msg.voice) {
+    return {
+      type: "voice",
+      fileId: msg.voice.file_id
+    }
+  }
   if (msg.photo?.length) {
     return {
       type: "photo",
@@ -59,6 +74,15 @@ async function sendEntry(ctx, entry) {
     return ctx.replyWithPhoto(entry.fileId, {
       caption: entry.caption || undefined
     })
+      if (entry.type === "audio") {
+    return ctx.replyWithAudio(entry.fileId, {
+      caption: entry.caption || undefined
+    })
+  }
+
+  if (entry.type === "voice") {
+    return ctx.replyWithVoice(entry.fileId)
+  }
   }
 
   if (entry.type === "document") {
