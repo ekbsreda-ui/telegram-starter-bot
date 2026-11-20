@@ -4,7 +4,7 @@ import fs from "node:fs/promises"
 import path from "node:path"
 
 const ADMIN_ID = 886539766
-const DB_DIR = path.join(process.cwd(), "data")
+const DB_DIR = "/data/storage"
 const DB_FILE = path.join(DB_DIR, "entries.json")
 const MAX_ENTRIES = 20
 
