@@ -69,6 +69,7 @@ function getContent(msg) {
   return null
 }
 
+
 async function sendEntry(ctx, entry) {
   if (entry.type === "photo") {
     return ctx.replyWithPhoto(entry.fileId, {
@@ -95,12 +96,8 @@ async function sendEntry(ctx, entry) {
   if (entry.type === "text") {
     return ctx.reply(entry.text)
   }
-
   return ctx.reply("Неизвестный формат материала.")
-})
-  }
-
-  return ctx.reply(entry.text)
+}
 }
 
 export function registerCommands(bot) {
@@ -221,7 +218,7 @@ export function registerCommands(bot) {
         }
 
         return ctx.reply(
-          `Теперь отправь материал для слова "${key}".\n\nМожно отправить текст, фотографию или документ.`
+          `Теперь отправь материал для слова "${key}".\n\nМожно отправить текст, фотографию, документ, аудио или голосовое сообщение.`
         )
       }
 
