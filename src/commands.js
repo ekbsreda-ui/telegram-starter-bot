@@ -74,7 +74,9 @@ async function sendEntry(ctx, entry) {
     return ctx.replyWithPhoto(entry.fileId, {
       caption: entry.caption || undefined
     })
-      if (entry.type === "audio") {
+  }
+
+  if (entry.type === "audio") {
     return ctx.replyWithAudio(entry.fileId, {
       caption: entry.caption || undefined
     })
@@ -83,12 +85,19 @@ async function sendEntry(ctx, entry) {
   if (entry.type === "voice") {
     return ctx.replyWithVoice(entry.fileId)
   }
-  }
 
   if (entry.type === "document") {
     return ctx.replyWithDocument(entry.fileId, {
       caption: entry.caption || undefined
     })
+  }
+
+  if (entry.type === "text") {
+    return ctx.reply(entry.text)
+  }
+
+  return ctx.reply("Неизвестный формат материала.")
+})
   }
 
   return ctx.reply(entry.text)
